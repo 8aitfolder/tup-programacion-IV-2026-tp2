@@ -61,5 +61,17 @@ Content-Type: application/json
     "completada": true
 }
 
+### Modificar con nombre duplicado
+PUT {{url}}/tareas/1
+Content-Type: application/json
+
+{
+    "nombre": "Lavar platos",
+    "completada": false
+}
+
+### Tarea inexistente
+GET {{url}}/tareas/999
+
 ### Quitar tarea
 DELETE {{url}}/tareas/1

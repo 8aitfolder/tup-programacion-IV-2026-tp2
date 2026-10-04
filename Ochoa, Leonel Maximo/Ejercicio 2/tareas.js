@@ -10,6 +10,10 @@ import {
 
 const router = express.Router();
 
+function parsearBooleano(valor) {
+  return valor === true || valor === 1 || valor === "true" || valor === "1";
+}
+
 function mapear(fila) {
   return {
     id: fila.id,
@@ -70,7 +74,8 @@ router.get("/:id", validarId, verificarValidaciones, async (req, res) => {
 // POST crear
 router.post("/", validarTarea, verificarValidaciones, async (req, res) => {
   const nombre = req.body.nombre.trim();
-  const completada = req.body.completada === undefined ? false : Boolean(req.body.completada);
+  const completada =
+    req.body.completada === undefined ? false : parsearBooleano(req.body.completada);
 
   if (await existeNombre(nombre)) {
     return res.status(409).json({ mensaje: "Ya existe una tarea con ese nombre" });
@@ -94,7 +99,7 @@ router.put("/:id", validarId, validarTareaPut, verificarValidaciones, async (req
   }
 
   const nombre = req.body.nombre.trim();
-  const completada = Boolean(req.body.completada);
+  const completada = parsearBooleano(req.body.completada);
 
   if (await existeNombre(nombre, id)) {
     return res.status(409).json({ mensaje: "Ya existe una tarea con ese nombre" });

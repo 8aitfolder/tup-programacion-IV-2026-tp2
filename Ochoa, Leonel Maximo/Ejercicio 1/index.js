@@ -2,7 +2,7 @@ import express from "express";
 import { conectarDB } from "./db.js";
 import rectangulosRouter from "./rectangulos.js";
 
-conectarDB();
+await conectarDB();
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;

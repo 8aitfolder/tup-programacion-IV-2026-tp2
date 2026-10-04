@@ -42,7 +42,7 @@ adoptadas para el modelo de datos y para la API.
 erDiagram
   TAREAS {
     INT id PK
-    VARCHAR nombre
+    VARCHAR nombre UK
     TINYINT completada
   }
 ```

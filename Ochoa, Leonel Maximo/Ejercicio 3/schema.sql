@@ -7,7 +7,8 @@ USE tp2_ejercicio3;
 CREATE TABLE IF NOT EXISTS alumnos (
   id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(80) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_nombre (nombre)
 );
 
 CREATE TABLE IF NOT EXISTS materias (

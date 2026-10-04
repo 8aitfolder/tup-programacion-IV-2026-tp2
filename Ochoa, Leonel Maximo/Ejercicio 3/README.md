@@ -23,10 +23,13 @@ decisiones de diseño adoptadas para el modelo de datos y para la API.
 ## Decisiones de diseño
 
 - **Recursos:** `/alumnos`, `/materias` y `/calificaciones`.
-- **Modelo:** tres tablas. `materias` es independiente. `calificaciones`
-  referencia `alumnos.id` y `materias.id` con claves foráneas. La unicidad
-  alumno-materia se garantiza con `UNIQUE (alumno_id, materia_id)` y se
-  verifica también en la API al crear y al modificar.
+- **Modelo:** tres tablas. `materias` es independiente. Los registros de
+  alumno-materia viven en `calificaciones`, que relaciona ambas tablas con
+  claves foráneas (`alumno_id`, `materia_id`). Así se cumple que las materias
+  se relacionan con los alumnos mediante FK, sin repetir el nombre de la
+  materia. La unicidad alumno-materia se garantiza con
+  `UNIQUE (alumno_id, materia_id)` y se verifica también en la API al crear
+  y al modificar.
 - **Escala de notas:** cada nota es un número de `0` a `10` inclusive.
 - **Datos derivados:** `promedio` y `condicion` se calculan al responder; no
   se persisten.
@@ -52,12 +55,12 @@ erDiagram
 
   ALUMNOS {
     INT id PK
-    VARCHAR nombre
+    VARCHAR nombre UK
   }
 
   MATERIAS {
     INT id PK
-    VARCHAR nombre
+    VARCHAR nombre UK
   }
 
   CALIFICACIONES {

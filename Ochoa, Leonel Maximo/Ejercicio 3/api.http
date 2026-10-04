@@ -25,6 +25,17 @@ GET {{url}}/alumnos/1
 ### Alumno con id invalido
 GET {{url}}/alumnos/algo
 
+### Alumno inexistente
+GET {{url}}/alumnos/999
+
+### Modificar alumno
+PUT {{url}}/alumnos/1
+Content-Type: application/json
+
+{
+    "nombre": "Ana Gomez"
+}
+
 ### Listado de materias
 GET {{url}}/materias
 
@@ -46,6 +57,14 @@ Content-Type: application/json
 
 ### Detalle de materia
 GET {{url}}/materias/1
+
+### Modificar materia
+PUT {{url}}/materias/2
+Content-Type: application/json
+
+{
+    "nombre": "Bases de datos"
+}
 
 ### Listado de calificaciones
 GET {{url}}/calificaciones
@@ -117,3 +136,9 @@ Content-Type: application/json
 
 ### Quitar calificacion
 DELETE {{url}}/calificaciones/1
+
+### Quitar materia
+DELETE {{url}}/materias/2
+
+### Quitar alumno
+DELETE {{url}}/alumnos/1

@@ -4,7 +4,7 @@ import alumnosRouter from "./alumnos.js";
 import materiasRouter from "./materias.js";
 import calificacionesRouter from "./calificaciones.js";
 
-conectarDB();
+await conectarDB();
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
