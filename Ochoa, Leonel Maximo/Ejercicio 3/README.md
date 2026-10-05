@@ -50,8 +50,8 @@ decisiones de diseño adoptadas para el modelo de datos y para la API.
 
 ```mermaid
 erDiagram
-  ALUMNOS ||--o{ CALIFICACIONES : rinde
-  MATERIAS ||--o{ CALIFICACIONES : evalua
+  ALUMNOS ||--o{ CALIFICACIONES : tiene
+  MATERIAS ||--o{ CALIFICACIONES : tiene
 
   ALUMNOS {
     INT id PK
@@ -65,8 +65,8 @@ erDiagram
 
   CALIFICACIONES {
     INT id PK
-    INT alumno_id FK
-    INT materia_id FK
+    INT alumno_id FK "UK(alumno_id, materia_id)"
+    INT materia_id FK "UK(alumno_id, materia_id)"
     DECIMAL nota1
     DECIMAL nota2
     DECIMAL nota3
